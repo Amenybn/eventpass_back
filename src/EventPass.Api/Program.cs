@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Port : 8080 par défaut (ASPNETCORE_HTTP_PORTS de l'image), surchargeable par PORT
+// Port : 5000 par défaut (ASPNETCORE_HTTP_PORTS du Dockerfile, distinct du 8080 du front), surchargeable par PORT
 var port = builder.Configuration["PORT"];
 if (!string.IsNullOrWhiteSpace(port)) builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 builder.WebHost.ConfigureKestrel(o => o.AddServerHeader = false);

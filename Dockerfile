@@ -21,15 +21,15 @@ COPY --from=build /app .
 # inutilisé si PostgreSQL est configuré (DB_HOST ou DATABASE_URL)
 RUN mkdir -p /app/data && chown 1654:1654 /app/data
 
-ENV ASPNETCORE_HTTP_PORTS=8080 \
+ENV ASPNETCORE_HTTP_PORTS=5000 \
     DOTNET_EnableDiagnostics=0 \
     SQLITE_PATH=/app/data/eventpass.db
 
 # Utilisateur non-root numérique ("app" de l'image .NET) : compatible runAsNonRoot
 USER 1654:1654
-EXPOSE 8080
+EXPOSE 5000
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
-  CMD wget -qO- "http://127.0.0.1:${PORT:-8080}/health" >/dev/null || exit 1
+  CMD wget -qO- "http://127.0.0.1:${PORT:-5000}/health" >/dev/null || exit 1
 
 ENTRYPOINT ["dotnet", "EventPass.Api.dll"]

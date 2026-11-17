@@ -4,7 +4,7 @@ API REST de la billetterie EventPass : ASP.NET Core 8 (minimal APIs), Entity Fra
 
 ```bash
 docker build -t eventpass-back .          # lance aussi les 7 tests d'intégration
-docker run -d -p 5080:8080 eventpass-back # SQLite intégré, données de démonstration
+docker run -d -p 5080:5000 eventpass-back # SQLite intégré, données de démonstration
 ```
 
 - Documentation interactive : http://localhost:5080/api/docs
